@@ -1,0 +1,8 @@
+class Solution:
+    def canAttendMeetings(self, intervals: List[List[int]]) -> bool:
+        # sort list by start intervals, start of current is less than end of prev - its an issue
+        intervals.sort(key=lambda x: x[0])
+        for i1,i2 in zip(intervals,intervals[1:]):
+            if i1[1]>i2[0]:
+                return False
+        return True
